@@ -1,0 +1,44 @@
+<h1>HEARnow</h1>
+<nav>
+  <a class="link" href="/songs/new">Upload</a> /
+  <a class="link" href="/songs/help">wuuut?</a>
+</nav>
+
+
+
+	<ul>
+	 {{#each songs}}
+
+	  <div class="small-4 columns">
+
+
+
+	    <div class="image-wrapper overlay-slide-in-left">
+
+	      
+
+	      <img src="https://tourneau.scene7.com/is/image/tourneau/ZEN0101011?hei=450&wid=300&fmt=png-alpha&resMode=bicub&op_sharpen=1" />
+
+	      
+
+	      <div class="image-overlay-content">
+
+	        <h2>song name</h2>
+
+	 		 <li><a href=/songs/{{this.id}}>{{this.name}}</a></li> 
+
+
+	        <p class="price">$2319.99</p>
+
+	        <a href="#" class="button">Buy Me</a>
+
+	      </div>
+	    </div>
+
+	  </div> 
+
+	  </div>
+	 {{/each}}
+	</ul>
+
+
