@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
 }
@@ -15,6 +15,12 @@ a {
 img {
   width: 500px;
 }
+
+nav {
+	margin-bottom: 20px;
+}
+
+
 
 
 /*hover for songsindex*/

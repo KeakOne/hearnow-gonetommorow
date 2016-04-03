@@ -46,9 +46,9 @@ app.get('/songs/:id', function(req,res){
 
 
 app.post('/songs', function(req,res) {
-  var newCat = req.body //cat from the form
-  newCat.id = songs.songs.length+1
-  songs.songs.push(newCat)
+  var newSong = req.body //cat from the form
+  newSong.id = songs.songs.length+1
+  songs.songs.push(newSong)
   res.render('songsIndex', songs)
 })
 
