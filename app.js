@@ -35,18 +35,18 @@ app.get('/songs/new', function(req, res) {
 
 app.get('/songs/:id', function(req,res){
   // console.log(req.params); // try going to /songs/1
-  function checkCatId (cat) {
-    return cat.id == req.params.id
+  function checksongId (song) {
+    return song.id == req.params.id
   }
   var userInput = Number(req.params.id)
-  var filteredsongs = songs.songs.filter(checkCatId)
+  var filteredsongs = songs.songs.filter(checksongId)
 
   res.render('songsShow',filteredsongs[0])
 })
 
 
 app.post('/songs', function(req,res) {
-  var newSong = req.body //cat from the form
+  var newSong = req.body //song from the form
   newSong.id = songs.songs.length+1
   songs.songs.push(newSong)
   res.render('songsIndex', songs)
