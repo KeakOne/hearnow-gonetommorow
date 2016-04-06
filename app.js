@@ -48,13 +48,17 @@ app.get('/songs/:id', function(req,res){
 
 app.post('/songs', function(req,res) {
   var newSong = req.body //song from the form
-
+  //take reqbody apart and save the pulled data with the correct keys??
   newSong.id = songs.songs.length+1
   songs.songs.push(newSong)
   res.render('songsIndex', songs)
   //read data.json before adding new song,
   //write the new data to the array,
   //then save the new array to data.json
+
+  //pay attention to how the file writing is happening
+  //as well as how to construct an obj and parse it to json file
+  //https://github.com/SamSimmons/site-scraper/blob/master/index.js
 })
 
 app.get('/songs/edit/:id', function (req, res){
