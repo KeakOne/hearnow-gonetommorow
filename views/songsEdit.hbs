@@ -1,13 +1,13 @@
-<h1>Current Cat Profile</h1>
+<h1>Current song Profile</h1>
 
 <br><br>
 
-<form class="update_cat" id="update_cat" action="/songs{{this.id}}" accept-charset="UTF-8" method="put">
+<form class="update_song" id="update_song" action="/songs{{this.id}}" accept-charset="UTF-8" method="put">
 
-  <input type="text" name="name" id="cat_name" />{{this.cat.name}}<br><br>
-  <input type="text" name="image" id="cat_image" /><br><br>
-  <textarea name="life_story" id="cat_life_story">
+  <input type="text" name="name" id="song_name" />{{this.song.name}}<br><br>
+  <input type="text" name="image" id="song_image" /><br><br>
+  <textarea name="description" id="song_description">
   </textarea><br><br>
-  <input type="submit" name="commit" value="Edit Cat" />
+  <input type="submit" name="commit" value="Edit song" />
 </form>
 <a class="link" href="/songs">nevermind</a>

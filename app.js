@@ -16,13 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //---------------------Ignore above here-------------------//
 var songs = {
  songs: [
-  {id: 1, name: 'fluffy', life_story:'I was fluffy once.. then I took an arrow to the knee'},
-  {id: 2, name: 'tick', life_story:'Tick Tock'}
+  {id: 1, name: 'Hammer time', artist: 'MC Hammer', description:'ooooh ooh ohhh ohhh ohhhh', url: '', artwork_url: '',},
+  {id: 2, name: 'man! i feel like a woman!',artist: 'Shania twain', description:'yeah gurl!', url: '', artwork_url: '',}
  ]
 }
 
 app.get('/', function(req, res) {
- res.redirect('/songs') // what is this doing?
+ res.redirect('/songs') 
 })
 
 app.get('/songs', function(req, res) {
@@ -34,7 +34,7 @@ app.get('/songs/new', function(req, res) {
 })
 
 app.get('/songs/:id', function(req,res){
-  // console.log(req.params); // try going to /songs/1
+
   function checksongId (song) {
     return song.id == req.params.id
   }
