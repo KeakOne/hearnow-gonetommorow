@@ -30,7 +30,7 @@
 	        	<p class="description">{{{description}}}</p>
 
 	        	<a href="#" class="button">Listen</a>
-	        </div>
+	      </div>
 	    </div>
 
 	  </div> 
@@ -38,15 +38,3 @@
 	  </div>
 	 {{/each}}
 	</ul>
-
-<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
-<script>
-SC.initialize({
-  client_id: '5674633ed2c579ff191eaa6e9f9de6b5'
-});
-
-var track_url = 'http://soundcloud.com/forss/flickermood';
-SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
-  console.log('oEmbed response: ', oEmbed);
-});
-</script>

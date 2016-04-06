@@ -48,10 +48,13 @@ app.get('/songs/:id', function(req,res){
 
 app.post('/songs', function(req,res) {
   var newSong = req.body //song from the form
-  
+
   newSong.id = songs.songs.length+1
   songs.songs.push(newSong)
   res.render('songsIndex', songs)
+  //read data.json before adding new song,
+  //write the new data to the array,
+  //then save the new array to data.json
 })
 
 app.get('/songs/edit/:id', function (req, res){
