@@ -1,3 +1,10 @@
+// document.getElementById("searchBtn").addEventListener("click", function() {
+//   var searchTerm = document.getElementById("searchTerm").value
+//   console.log(searchTerm)
+//   putImageOnPage(searchTerm)
+//   putSoundCloudOnPage(searchTerm)
+// })
+
 function putSoundCloudOnPage(searchTerm) {
   getSoundCloud(searchTerm, function (trackURL) {
     renderSoundCloudPlayer(trackURL, function (err, scIframe) {
@@ -6,9 +13,9 @@ function putSoundCloudOnPage(searchTerm) {
   })
 }
 
-SC.initialize({
-  client_id: '5674633ed2c579ff191eaa6e9f9de6b5'
-});
+// SC.initialize({
+//   client_id: '5674633ed2c579ff191eaa6e9f9de6b5'
+// });
 
 function getSoundCloud(searchTerm, callback) {
   var query = { q: searchTerm, license: 'cc-by-sa'}
@@ -26,3 +33,5 @@ function renderSoundCloudPlayer(trackURL, callback) {
     callback(null, htmlElement)
   })
 }
+
+

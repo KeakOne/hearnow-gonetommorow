@@ -38,6 +38,7 @@ app.get('/songs/:id', function(req,res){
   function checksongId (song) {
     return song.id == req.params.id
   }
+  // console.log(req)
   var userInput = Number(req.params.id)
   var filteredsongs = songs.songs.filter(checksongId)
 
@@ -47,6 +48,7 @@ app.get('/songs/:id', function(req,res){
 
 app.post('/songs', function(req,res) {
   var newSong = req.body //song from the form
+  
   newSong.id = songs.songs.length+1
   songs.songs.push(newSong)
   res.render('songsIndex', songs)
