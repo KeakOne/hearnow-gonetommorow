@@ -1,9 +1,10 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-
-
 var app = express();
+var get = require("superagent");
+var fs = require("fs");
+var soundcloud = require("./soundcloud.js")
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +23,7 @@ var songs = {
 }
 
 app.get('/', function(req, res) {
- res.redirect('/songs') 
+ res.redirect('/songs')
 })
 
 app.get('/songs', function(req, res) {
@@ -48,10 +49,15 @@ app.get('/songs/:id', function(req,res){
 
 app.post('/songs', function(req,res) {
   var newSong = req.body //song from the form
-  //take reqbody apart and save the pulled data with the correct keys??
+//get url, save url
+
+  var submittedUrl = getElementById
+
   newSong.id = songs.songs.length+1
   songs.songs.push(newSong)
+  console.log(newSong)
   res.render('songsIndex', songs)
+
   //read data.json before adding new song,
   //write the new data to the array,
   //then save the new array to data.json

@@ -4,3 +4,10 @@
   {"id": 2, "name": "man! i feel like a woman!","artist": "Shania twain", "description":"yeah gurl!", "url": "", "artwork_url": "",}
  ]
 }
+
+    artist:
+    artwork:
+    title:
+    artist_avatar:
+    artist_description:
+    link:
