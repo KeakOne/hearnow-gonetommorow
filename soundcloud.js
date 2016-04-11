@@ -1,13 +1,11 @@
   var request = require("superagent");
   require('dotenv').config();
 
-
-
+var userSubmittedLink = //the url being sent from app.js line 54
+// console.log(userSubmittedLink)
 
 module.exports = function(url,callback) {
   //hit the soundcloud api with the url
-var userSubmittedLink =  url;
-console.log(userSubmittedLink)
 
   request.get('http://api.soundcloud.com/resolve?url=http://soundcloud.com/matas/hobnotropic&client_id='+process.env.API_KEY)
   .end( function (err, res, data) {
