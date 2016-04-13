@@ -10,6 +10,7 @@ module.exports = function(url,callback) {
 
     //maybe create a dataobj that will be sent to app.js? or do the saving in here??
     var songObj = {
+      "id":'',
       "artist": res.body.user.username,
       "title":res.body.title,
       "artwork":res.body.artwork_url,
