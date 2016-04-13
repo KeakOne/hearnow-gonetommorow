@@ -51,10 +51,18 @@ app.get('/songs/:id', function(req,res){
 app.post('/songs', function(req,res) {
   var newSong = req.body.song //song-url unprocessed from the form
   // console.log(newSong);
-  soundcloud(newSong)
-  console.log(data)
+  // soundcloud(newSong)
+  soundcloud(newSong, function(err, songObj){
+    if (err) throw err
+
+    // write to the result -songObj- to file system
+
+  })
+
+
+  console.log(soundcloudObj)
   newSong.id = songs.songs.length+1
-  songs.songs.push(newSong)
+  songs.songs.push(soundcloudObj)
   res.render('songsIndex', songs)
 
   //read data.json before adding new song,
