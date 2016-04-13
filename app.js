@@ -71,10 +71,18 @@ app.post('/songs', function(req,res) {
   //then save the new array to data.json
 })
 
+app.get('/songs/help', function (req, res){
+
+  res.render('songsHelp')
+})
+
 app.get('/songs/edit/:id', function (req, res){
   console.log(res.body)
     res.render('songsEdit')
 })
+
+
+
 
 
 

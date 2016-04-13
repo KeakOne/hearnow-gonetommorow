@@ -1,13 +1,13 @@
 <h1>HEARnow</h1>
 <nav>
   <a class="link" href="/songs/new">Upload</a> /
-  <a class="link" href="/songs/help">wuuut?</a>
+  <a class="link" href="/songs/help">whatdo??</a>
 </nav>
 
 
 
 
-	<ul>
+	
 	 {{#each songs}}
 
 	  <div class="small-4 columns">
@@ -23,7 +23,7 @@
 	        <div class="image-overlay-content">
 
 
-	 		 	<li><h2><a href=/songs/{{this.id}}>{{this.title}}</a></h2></li>
+	 		 	<h2><a href=/songs/{{this.id}}>{{this.title}}</a></h2>
 
 	        	<h4 class="artist">{{{this.artist}}}</h4>
 
@@ -37,4 +37,4 @@
 
 	  </div>
 	 {{/each}}
-	</ul>
+	
