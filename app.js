@@ -59,6 +59,7 @@ app.post('/songs', function(req,res) {
   // console.log(songObj)
   songObj.id = songs.songs.length+1
     console.log(songObj)
+    //save to db dawg!!!
   songs.songs.push(songObj)
   res.render('songsIndex', songs)
   })

@@ -6,7 +6,7 @@ module.exports = function(url,callback) {
 
   request.get('http://api.soundcloud.com/resolve?url='+url+'&client_id='+process.env.API_KEY)
   .end( function (err, res, data) {
-      console.log(res)
+      console.log(res.body)
     if (err) callback(err)
 
     var songObj = {
