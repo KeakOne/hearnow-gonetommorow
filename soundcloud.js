@@ -17,7 +17,7 @@ module.exports = function(url,callback) {
       "artist_avatar":res.body.user.avatar_url,
       "artist_description":res.body.description,
       "link": res.body.user.permalink_url,
-      "stream_url":res.body.stream_url
+      "soundcloud_id":res.body.id
     }
 
     callback(null, songObj)

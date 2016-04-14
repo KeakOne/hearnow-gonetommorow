@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 //---------------------Ignore above here-------------------//
 var songs = {
  songs: [
-  {id: 1, title: 'D.R.N.D.Y - XHXX (Original Mix) [PATTERNS 027D]', artist: 'Patterns Records', artist_description:"Supported by: Richie Hawtin, Marco Carola, Joseph Capriati, Paco Osuna, Mike Vath, Horacio Cruz, Kazu Kimura, Klaudia Gawlas and many others...", link: 'http:// soundcloud.com/patterns-records', artist_avatar: 'https://i1.sndcdn.com/avatars-000014659765-dkzcll-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000121732955-g3ob4k-large.jpg', stream_url:''},
-  {id: 2, title: 'jumanji', artist: 'PXLX', artist_description:'vocals removed from soundcloud due to copyright click download for full version\r\n\r\nfacebook.com/fxrxvxrpxlx\r\ntwitter.com/fxrxvxrpxlx\r\npolo.thesecret.club', link: 'http://soundcloud.com/fxrxvxrpxlx', artist_avatar: 'https://i1.sndcdn.com/avatars-000208709440-s3sdxs-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000101146600-ronxxr-large.jpg', stream_url:''}
+  {id: 1, title: 'D.R.N.D.Y - XHXX (Original Mix) [PATTERNS 027D]', artist: 'Patterns Records', artist_description:"Supported by: Richie Hawtin,", link: 'http:// soundcloud.com/patterns-records', artist_avatar: 'https://i1.sndcdn.com/avatars-000014659765-dkzcll-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000121732955-g3ob4k-large.jpg', soundcloud_id:''},
+  {id: 2, title: 'jumanji', artist: 'PXLX', artist_description:'vocals removed from soundcloud due to copyright click download for full version\r\n\r\nfacebook.com/fxrxvxrpxlx\r\ntwitter.com/fxrxvxrpxlx\r\npolo.thesecret.club', link: 'http://soundcloud.com/fxrxvxrpxlx', artist_avatar: 'https://i1.sndcdn.com/avatars-000208709440-s3sdxs-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000101146600-ronxxr-large.jpg', soundcloud_id:''}
  ]
 }
 

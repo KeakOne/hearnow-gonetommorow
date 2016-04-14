@@ -1,7 +1,0 @@
- songs = {
- "songs": [
-  {"id": 1, "title": "Hammer time", "artist": "MC Hammer", "artist_description":"ooooh ooh ohhh ohhh ohhhh","artwork":"a link", "link": "", "artwork_url": "","artist_avatar":"a link"},
-  {"id": 2, "title": "man! i feel like a woman!","artist": "Shania twain", "artist_description":"yeah gurl!","artwork":"a link", "link": "", "artwork_url": "","artist_avatar":"a link"}
- ]
-}
-
