@@ -5,6 +5,7 @@ var app = express();
 var get = require("superagent");
 var fs = require("fs");
 var soundcloud = require("./soundcloud.js")
+var mysql = require("mysql");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,21 +56,24 @@ app.post('/songs', function(req,res) {
   soundcloud(newSong, function(err, songObj){
     if (err) throw err
 
-    // write to the result -songObj- to file system
-  // console.log(songObj)
   songObj.id = songs.songs.length+1
     console.log(songObj)
     //save to db dawg!!!
-  songs.songs.push(songObj)
-  res.render('songsIndex', songs)
+
+  var knex = require('knex')({
+    client: 'mysql',
+    connection: {
+      host     : '127.0.0.1',
+      user     : 'your_database_user',
+      password : 'your_database_password',
+      database : 'songs'
+  },
+    useNullAsDefault: true
+});
+  knex('songs').insert(songObj)
+    songs.songs.push(songObj)
+    res.render('songsIndex', songs)
   })
-
-  // songs.songs.push(songObj)
-  // res.render('songsIndex', songs)
-
-  //read data.json before adding new song,
-  //write the new data to the array,
-  //then save the new array to data.json
 })
 
 app.get('/songs/help', function (req, res){
