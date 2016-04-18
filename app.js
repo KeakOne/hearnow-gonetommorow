@@ -10,7 +10,6 @@ var sqlite3 = require("sqlite3");
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -80,27 +79,16 @@ app.get('/songs/:id', function(req,res){
     console.log('the song',data)
     res.render('songsShow',data[0])
   })
-
-  // console.log(req)
-//   var userInput = Number(req.params.id)
-//   var filteredsongs = songs.songs.filter(checksongId)
-
-//   res.render('songsShow',filteredsongs[0])
 })
 
 
 app.post('/songs', function(req,res) {
-  var newSong = req.body.song //song-url unprocessed from the form
-  // console.log(newSong);
-  // soundcloud(newSong)
+  var newSong = req.body.song
   soundcloud(newSong, function(err, songObj){
     if (err) throw err
-      //save to db dawg!!!
     insertSong(songObj, function(err,data) {
-
       res.redirect('/songs')
     })
-  
   })
 })
 
@@ -109,13 +97,7 @@ app.get('/songs/help', function (req, res){
 })
 
 app.get('/songs/edit/:id', function (req, res){
-  console.log(res.body)
-    res.render('songsEdit')
+  res.render('songsEdit')
 })
-
-
-
-
-
 
 module.exports = app;
