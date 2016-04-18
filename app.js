@@ -45,6 +45,16 @@ function readSong(id, callback) {
   })
 }
 
+function insertSong(songObj, callback) {
+  knex('songs').insert(songObj)
+    .then( function(data) {
+      callback(null,data)
+    })
+    .catch(function(err) {
+      callback(err)
+    })
+}
+
 //---------------------Ignore above here-------------------//
 app.get('/', function(req, res) {
  res.redirect('/songs')
@@ -86,16 +96,11 @@ app.post('/songs', function(req,res) {
   soundcloud(newSong, function(err, songObj){
     if (err) throw err
       //save to db dawg!!!
+    insertSong(songObj, function(err,data) {
 
-    knex('songs').insert(songObj)
-      .then( function(data) {
-        console.log(data) })
-      .catch( function(err) {
-        console.log("here is the obj", songObj)
-        console.log('an err!',err)
-      })
-    songs.songs.push(songObj)
-    res.render('songsIndex', songs)
+      res.redirect('/songs')
+    })
+  
   })
 })
 
