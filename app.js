@@ -15,34 +15,43 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-  var knex = require('knex')({
-    client: 'sqlite3',
-    connection: {
-    filename: './dev.sqlite3'
-    },
-    useNullAsDefault: true
-  });
+var knex = require('knex')({
+  client: 'sqlite3',
+  connection: {
+  filename: './dev.sqlite3'
+  },
+  useNullAsDefault: true
+});
 
-//---------------------Ignore above here-------------------//
-var songs = {
- songs: [
-  {id: 1, title: 'D.R.N.D.Y - XHXX (Original Mix) [PATTERNS 027D]', artist: 'Patterns Records', artist_description:"Supported by: Richie Hawtin,", link: 'http:// soundcloud.com/patterns-records', artist_avatar: 'https://i1.sndcdn.com/avatars-000014659765-dkzcll-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000121732955-g3ob4k-large.jpg', soundcloud_id:''},
-  {id: 2, title: 'jumanji', artist: 'PXLX', artist_description:'vocals removed from soundcloud due to copyright click download for full version\r\n\r\nfacebook.com/fxrxvxrpxlx\r\ntwitter.com/fxrxvxrpxlx\r\npolo.thesecret.club', link: 'http://soundcloud.com/fxrxvxrpxlx', artist_avatar: 'https://i1.sndcdn.com/avatars-000208709440-s3sdxs-large.jpg', artwork:'https://i1.sndcdn.com/artworks-000101146600-ronxxr-large.jpg', soundcloud_id:''}
- ]
+function readAllSongs(callback) {
+  knex.select('*').from('songs')
+    .then( function(data) {
+      callback(null, data)
+    })
+    .catch( function(err) {
+      callback(err)
+    })
 }
 
+function readSong(id, callback) {
+  
+}
 
+//---------------------Ignore above here-------------------//
 app.get('/', function(req, res) {
  res.redirect('/songs')
 })
 
 app.get('/songs', function(req, res) {
-// knex.select('*').from('users')
- res.render('songsIndex', songs)
+  readAllSongs( function(err,data) {
+    // if (err)  something
+
+    res.render('songsIndex', {songs: data})
+  }) 
 })
 
 app.get('/songs/new', function(req, res) {
- res.render('songsNew')
+  res.render('songsNew')
 })
 
 app.get('/songs/:id', function(req,res){
@@ -67,7 +76,8 @@ app.post('/songs', function(req,res) {
       //save to db dawg!!!
 
     knex('songs').insert(songObj)
-      .then( function(data) {console.log(data) })
+      .then( function(data) {
+        console.log(data) })
       .catch( function(err) {
         console.log("here is the obj", songObj)
         console.log('an err!',err)
@@ -78,7 +88,6 @@ app.post('/songs', function(req,res) {
 })
 
 app.get('/songs/help', function (req, res){
-
   res.render('songsHelp')
 })
 
