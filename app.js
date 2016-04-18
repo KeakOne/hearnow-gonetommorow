@@ -5,7 +5,7 @@ var app = express();
 var get = require("superagent");
 var fs = require("fs");
 var soundcloud = require("./soundcloud.js")
-var mysql = require("mysql");
+var sqlite3 = require("sqlite3");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -14,6 +14,14 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+  var knex = require('knex')({
+    client: 'sqlite3',
+    connection: {
+    filename: './dev.sqlite3'
+    },
+    useNullAsDefault: true
+  });
 
 //---------------------Ignore above here-------------------//
 var songs = {
@@ -29,6 +37,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/songs', function(req, res) {
+// knex.select('*').from('users')
  res.render('songsIndex', songs)
 })
 
@@ -55,22 +64,14 @@ app.post('/songs', function(req,res) {
   // soundcloud(newSong)
   soundcloud(newSong, function(err, songObj){
     if (err) throw err
+      //save to db dawg!!!
 
-  songObj.id = songs.songs.length+1
-    console.log(songObj)
-    //save to db dawg!!!
-
-  var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host     : '127.0.0.1',
-      user     : 'your_database_user',
-      password : 'your_database_password',
-      database : 'songs'
-  },
-    useNullAsDefault: true
-});
-  knex('songs').insert(songObj)
+    knex('songs').insert(songObj)
+      .then( function(data) {console.log(data) })
+      .catch( function(err) {
+        console.log("here is the obj", songObj)
+        console.log('an err!',err)
+      })
     songs.songs.push(songObj)
     res.render('songsIndex', songs)
   })
