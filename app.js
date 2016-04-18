@@ -34,7 +34,15 @@ function readAllSongs(callback) {
 }
 
 function readSong(id, callback) {
-  
+  knex.select('*').from('songs').where({
+    id: id,
+  })
+  .then( function(data) {
+    callback(null,data)
+  })
+  .catch( function(err){
+    callback(err)
+  })
 }
 
 //---------------------Ignore above here-------------------//
@@ -55,15 +63,19 @@ app.get('/songs/new', function(req, res) {
 })
 
 app.get('/songs/:id', function(req,res){
+  readSong(req.params.id, function(err,data) {
+    if (err) {
+      // redirect to error page
+    }
+    console.log('the song',data)
+    res.render('songsShow',data[0])
+  })
 
-  function checksongId (song) {
-    return song.id == req.params.id
-  }
   // console.log(req)
-  var userInput = Number(req.params.id)
-  var filteredsongs = songs.songs.filter(checksongId)
+//   var userInput = Number(req.params.id)
+//   var filteredsongs = songs.songs.filter(checksongId)
 
-  res.render('songsShow',filteredsongs[0])
+//   res.render('songsShow',filteredsongs[0])
 })
 
 
