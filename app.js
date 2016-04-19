@@ -54,6 +54,8 @@ function insertSong(songObj, callback) {
     })
 }
 
+// function killSong()
+
 //---------------------Ignore above here-------------------//
 app.get('/', function(req, res) {
  res.redirect('/songs')
@@ -64,7 +66,7 @@ app.get('/songs', function(req, res) {
     // if (err)  something
 
     res.render('songsIndex', {songs: data})
-  }) 
+  })
 })
 
 app.get('/songs/new', function(req, res) {
