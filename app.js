@@ -85,15 +85,20 @@ app.get('/songs/:id', function(req,res){
 app.post('/songs', function(req,res) {
   var newSong = req.body.song
   soundcloud(newSong, function(err, songObj){
-    if (err) throw err
+    console.log('err', err)
     insertSong(songObj, function(err,data) {
       res.redirect('/songs')
     })
   })
 })
 
-app.get('/songs/help', function (req, res){
+app.get('/songs-help', function (req, res){
+  console.log("render")
   res.render('songsHelp')
+})
+
+app.get('/songs/404', function (req, res){
+  res.render('songs404')
 })
 
 app.get('/songs/edit/:id', function (req, res){
