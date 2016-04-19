@@ -89,7 +89,7 @@ nav {
 .overlay-slide-in-left img {
   transition: all 0.3s ease-in-out; }
 .overlay-slide-in-left .image-overlay-content {
-  background-image: url(http://www.awwwards.com/awards/images/2015/04/pattern.jpg);
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/geometry2.png);
   background-color: rgba(0, 0, 0, 0.3);
   transform: translateX(-110%);
   opacity: 1;
