@@ -54,7 +54,22 @@ function insertSong(songObj, callback) {
     })
 }
 
-// function killSong()
+
+function killSong() {
+  knex('songs')
+  .where( 'kill_at','<' ,Date.now())
+  .del().then(function(data){
+    console.log(data)
+  })
+}
+
+function startTimer() {
+  knex('songs')
+  .where()
+  .del().then(function(data){
+    console.log(data)
+  })
+}
 
 //---------------------Ignore above here-------------------//
 app.get('/', function(req, res) {
@@ -62,6 +77,8 @@ app.get('/', function(req, res) {
 })
 
 app.get('/songs', function(req, res) {
+  killSong()
+  startTimer()
   readAllSongs( function(err,data) {
     // if (err)  something
 
@@ -78,7 +95,7 @@ app.get('/songs/:id', function(req,res){
     if (err) {
       // redirect to error page
     }
-    console.log('the song',data)
+    // console.log('the song',data)
     res.render('songsShow',data[0])
   })
 })
@@ -95,7 +112,6 @@ app.post('/songs', function(req,res) {
 })
 
 app.get('/songs-help', function (req, res){
-  console.log("render")
   res.render('songsHelp')
 })
 

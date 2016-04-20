@@ -17,7 +17,8 @@ module.exports = function(url,callback) {
       "artist_description":res.body.description,
       "link":              res.body.user.permalink_url,
       "soundcloud_id":     res.body.id,
-      "created_at":         Date.now()
+      "created_at":        Date.now(),
+      "kill_at":           Date.now()+4320000
     }
 
     callback(null, songObj)

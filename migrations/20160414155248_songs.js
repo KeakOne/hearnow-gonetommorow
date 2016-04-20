@@ -9,8 +9,9 @@ exports.up = function(knex, Promise) {
   table.string('link')
   table.string('soundcloud_id')
   table.timestamps()
+  table.timestamp('kill_at')
  })
- 
+
 };exports.down = function(knex, Promise) {
  return knex.schema.dropTableIfExists('songs')
 };
