@@ -59,7 +59,7 @@ function killSong() {
   knex('songs')
   .where( 'kill_at','<' ,Date.now())
   .del().then(function(data){
-    console.log(data)
+    console.log("killsong",data)
   })
 }
 
