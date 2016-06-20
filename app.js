@@ -6,6 +6,7 @@ var get = require("superagent");
 var fs = require("fs");
 var soundcloud = require("./soundcloud.js")
 var sqlite3 = require("sqlite3");
+var pg = require('pg');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -13,6 +14,7 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // var knex = require('knex')({
 //   client: 'sqlite3',
@@ -22,8 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   useNullAsDefault: true
 // });
 
+
+
 var knexConfig = require("./knexfile.js")
 var knex = require('knex')(knexConfig.production)
+
+
 
 function readAllSongs(callback) {
   knex.select('*').from('songs')
@@ -58,13 +64,12 @@ function insertSong(songObj, callback) {
 }
 
 
-// function killSong() {
-//   knex('songs')
-//   .where( 'kill_at','<' ,Date.now())
-//   .del().then(function(data){
-//     console.log("killsong",data)
-//   })
-// }
+function killSong() {
+  knex('songs')
+  .where( 'kill_at','<' ,Date.now())
+  .del().then(function(data){
+  })
+}
 
 function startTimer() {
   knex('songs')
@@ -98,7 +103,6 @@ app.get('/songs/:id', function(req,res){
     if (err) {
       // redirect to error page
     }
-    // console.log('the song',data)
     res.render('songsShow',data[0])
   })
 })
@@ -109,6 +113,8 @@ app.post('/songs', function(req,res) {
   soundcloud(newSong, function(err, songObj){
     console.log(songObj, err)
     insertSong(songObj, function(err,data) {
+      console.log('fields coming back', err)
+
       res.redirect('/songs')
     })
   })
