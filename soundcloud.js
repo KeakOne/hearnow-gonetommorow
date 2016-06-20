@@ -9,10 +9,10 @@ module.exports = function(url,callback) {
     if (err) callback(err)
 
     var songObj = {
-      // "artist":            res.body.user.username,
+      "artist":            res.body.user.username,
       "title":             res.body.title,
       "artwork":           res.body.artwork_url,
-      "artist_avatar":     res.body.user.avatar_url,
+      // "artist_avatar":     res.body.user.avatar_url,
       "artist_description":res.body.description,
       "link":              res.body.user.permalink_url,
       "soundcloud_id":     res.body.id,
@@ -24,4 +24,3 @@ module.exports = function(url,callback) {
   })
 
 }
-

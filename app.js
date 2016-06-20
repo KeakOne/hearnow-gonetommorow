@@ -14,6 +14,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// var knex = require('knex')({
+//   client: 'sqlite3',
+//   connection: {
+//   filename: './dev.sqlite3'
+//   },
+//   useNullAsDefault: true
+// });
+
 var knexConfig = require("./knexfile.js")
 var knex = require('knex')(knexConfig.production)
 
@@ -50,13 +58,13 @@ function insertSong(songObj, callback) {
 }
 
 
-function killSong() {
-  knex('songs')
-  .where( 'kill_at','<' ,Date.now())
-  .del().then(function(data){
-    console.log("killsong",data)
-  })
-}
+// function killSong() {
+//   knex('songs')
+//   .where( 'kill_at','<' ,Date.now())
+//   .del().then(function(data){
+//     console.log("killsong",data)
+//   })
+// }
 
 function startTimer() {
   knex('songs')
@@ -72,8 +80,8 @@ app.get('/', function(req, res) {
 })
 
 app.get('/songs', function(req, res) {
-  killSong()
-  startTimer()
+  // killSong()
+  // startTimer()
   readAllSongs( function(err,data) {
     // if (err)  something
 
@@ -99,7 +107,7 @@ app.get('/songs/:id', function(req,res){
 app.post('/songs', function(req,res) {
   var newSong = req.body.song
   soundcloud(newSong, function(err, songObj){
-    console.log('err', err)
+    console.log('/songs error with uploading!!', err)
     insertSong(songObj, function(err,data) {
       res.redirect('/songs')
     })
