@@ -113,8 +113,9 @@ app.get('/songs/:id', function(req,res){
 app.post('/songs', function(req,res) {
   var newSong = req.body.song
   soundcloud(newSong, function(err, songObj){
+    console.log(res.body, err)
+
     insertSong(songObj, function(err,data) {
-      console.log(songObj, err)
 
       res.redirect('/songs')
     })
