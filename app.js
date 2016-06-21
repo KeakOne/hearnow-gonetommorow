@@ -54,6 +54,8 @@ function readSong(id, callback) {
 }
 
 function insertSong(songObj, callback) {
+  console.log('inside insertsong', songObj)
+
   knex('songs').insert(songObj)
     .then( function(data) {
       callback(null,data)
