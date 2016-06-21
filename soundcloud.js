@@ -3,6 +3,8 @@ require('dotenv').config();
 require('fs');
 
 module.exports = function(url,callback) {
+  console.log(url, "raw url from form")
+  console.log(process.env.API_KEY, "in soundcloud")
 
   request.get('http://api.soundcloud.com/resolve?url='+url+'&client_id='+process.env.API_KEY)
   .end( function (err, res, data) {
