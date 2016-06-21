@@ -4,7 +4,7 @@ require('fs');
 
 module.exports = function(url,callback) {
 
-  request.get('http://api.soundcloud.com/resolve?url='+url+'&CLIENT_ID='+process.env.API_KEY)
+  request.get('http://api.soundcloud.com/resolve?url='+url+'&client_id='+process.env.API_KEY)
   .end( function (err, res, data) {
     if (err) callback(err)
 
@@ -19,6 +19,7 @@ module.exports = function(url,callback) {
       "created_at":        Date.now(),
       "kill_at":           Date.now()+43200
     }
+
     callback(null, songObj)
   })
 

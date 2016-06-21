@@ -16,18 +16,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// var knex = require('knex')({
-//   client: 'sqlite3',
-//   connection: {
-//   filename: './dev.sqlite3'
-//   },
-//   useNullAsDefault: true
-// });
+var knex = require('knex')({
+  client: 'sqlite3',
+  connection: {
+  filename: './dev.sqlite3'
+  },
+  useNullAsDefault: true
+});
 
 
-
-var knexConfig = require("./knexfile.js")
-var knex = require('knex')(knexConfig.production)
+//
+// var knexConfig = require("./knexfile.js")
+// var knex = require('knex')(knexConfig.production)
 
 
 
