@@ -10,7 +10,7 @@ module.exports = function(url,callback) {
   .end( function (err, res, data) {
     if (err) callback(err)
     console.log(res.status, 'status')
-    console.log(res.body, "in soundcloud")
+    console.log(res.body.user, 'in soundcloud')
     var songObj = {
       "artist":            res.body.user.username,
       "title":             res.body.title,
