@@ -31,7 +31,7 @@ module.exports = {
       password: "MIk7ZGe1_E-3t05gsCRIgbWxWz",
       database: "d1vppu3cc53g42",
       ssl: true
-    }
+    },
     pool: {
       min: 2,
       max: 10
