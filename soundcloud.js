@@ -9,7 +9,8 @@ module.exports = function(url,callback) {
   request.get('http://api.soundcloud.com/resolve?url='+url+'&client_id='+process.env.API_KEY)
   .end( function (err, res, data) {
     if (err) callback(err)
-    console.log(res, "in soundcloud")
+    console.log(res.status, 'status')
+    console.log(res.body, "in soundcloud")
     var songObj = {
       "artist":            res.body.user.username,
       "title":             res.body.title,
